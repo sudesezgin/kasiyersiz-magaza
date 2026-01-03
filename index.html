@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kasiyersiz Mağaza Prototipi</title>
+    <style>
+      body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.box {
+    background: white;
+    padding: 35px;
+    margin: auto;
+    width: 340px;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 0.8s ease;
+}
+
+h2 {
+    color: #4b3cc4;
+}
+
+p {
+    color: #555;
+}
+
+input {
+    padding: 12px;
+    margin: 10px 0;
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 95%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+    </style>
+</head>
+<body>
+
+<!-- GİRİŞ EKRANI -->
+<div class="container box" id="login">
+    <h2>Kasiyersiz Mağaza</h2>
+    <input type="text" placeholder="Kullanıcı Adı"><br>
+    <input type="password" placeholder="Şifre"><br>
+    <button onclick="login()">Giriş Yap</button>
+</div>
+
+<!-- MAĞAZA EKRANI -->
+<div class="container box hidden" id="store">
+   <div class="container box hidden" id="store"></div>
+    <h2>Mağaza</h2>
+    <p>Ürünler sepete eklendi.</p>
+    <button onclick="finish()">Alışverişi Bitir</button>
+</div>
+ 
+<!-- FİŞ EKRANI -->
+<div class="container box hidden" id="receipt">
+    <h2>Fiş</h2>
+    <p>Toplam Tutar: <b>150 TL</b></p>
+    <p>Ödeme Başarılı ✔</p>
+    <button onclick="location.reload()">Çıkış</button>
+</div>
+
+<script>
+    function login() {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("store").classList.remove("hidden");
+
+        setTimeout(() => {
+            document.getElementById("locationText").innerHTML =
+                "📍 Konum doğrulandı ✔";
+        }, 1500);
+    }
+
+    function finish() {
+        document.getElementById("store").classList.add("hidden");
+        document.getElementById("receipt").classList.remove("hidden");
+    }
+</script>
+
+</body>
+</html>
+
+
+
+    
